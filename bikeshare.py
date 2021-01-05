@@ -27,7 +27,7 @@ def get_filters():
     
     while True:
         
-        city = input("Which City would you like to analyze (Chicago, New York City, Washington): ").lower()
+        city = input("Which City would you like to analyze (Chicago, New York City, Washington): ").strip().lower()
 
         try:
             #print(city)
@@ -39,7 +39,7 @@ def get_filters():
         break
     
     while True:
-        filter_type = input("Which would you like to filter on [Month, Day, Both, or None]: ").lower()
+        filter_type = input("Which would you like to filter on [Month, Day, Both, or None]: ").strip().lower()
         
         try:
             if filter_type not in ['month', 'day', 'both', 'none']:
@@ -53,7 +53,7 @@ def get_filters():
         # get user input for month (all, january, february, ... , june)
         FILTER['filtertype'] = 'Month'
         while True:
-            month = input("Which month? (Type out full month name: [January, February, March, April, May or June]) ").lower()
+            month = input("Which month? (Type out full month name: [January, February, March, April, May or June]) ").strip().lower()
             day = 'All'
  
             try:
@@ -68,7 +68,7 @@ def get_filters():
         # get user input for day of week (all, monday, tuesday, ... sunday)
         FILTER['filtertype'] = 'Day'
         while True:
-            day = input("Which day of week? (Type out full weekday name: [Monday, Tuesday, Wednesday, etc]) ").lower()
+            day = input("Which day of week? (Type out full weekday name: [Monday, Tuesday, Wednesday, etc]) ").strip().lower()
             month = 'None'
             
             try:
@@ -82,7 +82,7 @@ def get_filters():
     elif filter_type == 'both':
         FILTER['filtertype'] = 'Both'
         while True:
-            month = input("Which month? (Type out full month name: [January, February, March, April, May or June]) ").lower()
+            month = input("Which month? (Type out full month name: [January, February, March, April, May or June]) ").strip().lower()
  
             try:
                 if month not in ['january', 'february', 'march', 'april', 'may', 'june']:
@@ -93,7 +93,7 @@ def get_filters():
             break
 
         while True:
-            day = input("Which day of week? (Type out full weekday name: [Monday, Tuesday, Wednesday, etc]) ").lower()
+            day = input("Which day of week? (Type out full weekday name: [Monday, Tuesday, Wednesday, etc]) ").strip().lower()
 
             try:
                 if day not in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
@@ -267,14 +267,16 @@ def display_data(df):
     
     view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n').lower()
     start_loc = 0
-    while (view_data == 'yes'):
-        print(df.iloc[start_loc:start_loc + 5])
-        start_loc += 5
+    
+    while True:        
+        if (view_data == 'yes'):
+            print(df.iloc[start_loc:start_loc + 5])
+            start_loc += 5
         
-        view_data = input("Do you wish to continue? (yes or no): ").lower()
+            view_data = input("Do you wish to continue? (yes or no): ").lower()
 
-        if view_data != 'yes':
-            break
+            if view_data != 'yes':
+                break
 
 def main():
     while True:

@@ -6,6 +6,7 @@ Explore US Bikeshare Data
 ### Description
 Explores data related to bike share systems for three major cities in the United States—Chicago, New York City, and Washington.
 Application will calculate statistices and provide an interactive environment where user can choose the data and filter for a dataset to analyze
+Note: Washington data does not contain any Gender or Birth Year data
 
 ### Files used
 bikeshare.py
